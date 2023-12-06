@@ -1,6 +1,7 @@
 package tn.esprit.veloureservation.UI
 
 import android.content.DialogInterface
+import android.content.Intent  // Import Intent class for navigation
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import tn.esprit.veloureservation.Models.ReservationRequest
 import tn.esprit.veloureservation.R
+import tn.esprit.veloureservation.UI.PaylaterActivity
+import tn.esprit.veloureservation.UI.ValidActivity
 import tn.esprit.veloureservation.ViewModels.ReservationViewModel
 import java.util.Calendar
 
@@ -84,6 +87,20 @@ class MainActivity : AppCompatActivity() {
 
         reservationViewModel.commandeVelo(reservationRequest)
 
+        // Navigate to the appropriate activity based on the payment method
+        when (paymentMethod) {
+            "Credit Card" -> {
+                val intent = Intent(this, ValidActivity::class.java)
+                startActivity(intent)
+            }
+            "pay Later" -> {
+                val intent = Intent(this, PaylaterActivity::class.java)
+                startActivity(intent)
+            }
+            else -> {
+                // Handle other payment methods if needed
+            }
+        }
 
         // Additional logic if needed
         // You can use dateReservation and paymentMethod here or perform other actions
