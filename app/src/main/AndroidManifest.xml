@@ -42,6 +42,12 @@
         </activity>
 
         <activity
+            android:name=".UI.PromocodeActivity"
+            android:exported="true">
+            <!-- Add any additional intent filters or configuration for ValidActivity here if needed -->
+        </activity>
+
+        <activity
             android:name=".UI.CardActivity"
             android:exported="true">
             <!-- Add any additional intent filters or configuration for ValidActivity here if needed -->

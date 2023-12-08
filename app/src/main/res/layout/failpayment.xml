@@ -21,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
+        app:layout_constraintVertical_bias="0.196" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -64,11 +64,11 @@
         android:layout_width="290dp"
         android:layout_height="59dp"
         android:alpha="0.8"
-        android:background="@drawable/rounded_button_background"
         android:text="Try again !"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="18sp"
+        app:backgroundTint="#007E61"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -97,11 +97,11 @@
         android:layout_width="290dp"
         android:layout_height="59dp"
         android:alpha="0.8"
-        android:background="@drawable/rounded_button_background"
         android:text="Back To Market place"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="18sp"
+        app:backgroundTint="#007E61"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

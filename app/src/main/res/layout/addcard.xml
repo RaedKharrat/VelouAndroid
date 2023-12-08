@@ -22,16 +22,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.086" />
 
+
     <ImageView
         android:id="@+id/iv"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="401dp"
+        android:layout_height="238dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/cartaa"
         android:scaleType="centerCrop"
-        android:background="@drawable/cartavierge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textView"
@@ -57,6 +58,7 @@
         android:alpha="0.7"
         android:background="@drawable/rounded_edittext_background"
         android:hint="**** **** **** ****"
+        android:maxLength="16"
         android:textAlignment="center"
         android:textColorHint="#111111"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +88,7 @@
         android:alpha="0.7"
         android:background="@drawable/rounded_edittext_background"
         android:hint="john dony"
+        android:maxLength="50"
         android:textAlignment="center"
         android:textColorHint="#111111"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,6 +116,7 @@
         android:alpha="0.7"
         android:background="@drawable/rounded_edittext_background"
         android:hint="***"
+        android:maxLength="3"
         android:textAlignment="center"
         android:textColorHint="#111111"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,6 +149,7 @@
         android:alpha="0.7"
         android:background="@drawable/rounded_edittext_background"
         android:hint="MM/YYYY"
+        android:maxLength="7"
         android:textAlignment="center"
         android:textColorHint="#111111"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -159,11 +164,11 @@
         android:layout_width="290dp"
         android:layout_height="59dp"
         android:alpha="0.8"
-        android:background="@drawable/rounded_button_background"
-        android:text="Submit"
+        android:text="Pay Now !"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textSize="18sp"
+        app:backgroundTint="#007E61"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -173,16 +178,16 @@
 
     <CheckBox
         android:id="@+id/toggleSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="274dp"
+        android:layout_height="39dp"
         android:text="Save card data for your next payment"
-        android:textColor="#111111"
+        android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.335" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

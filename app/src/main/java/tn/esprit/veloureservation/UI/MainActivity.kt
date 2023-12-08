@@ -1,7 +1,7 @@
 package tn.esprit.veloureservation.UI
 
 import android.content.DialogInterface
-import android.content.Intent  // Import Intent class for navigation
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -13,8 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import tn.esprit.veloureservation.Models.ReservationRequest
 import tn.esprit.veloureservation.R
+import tn.esprit.veloureservation.UI.CardActivity
 import tn.esprit.veloureservation.UI.PaylaterActivity
-import tn.esprit.veloureservation.UI.ValidActivity
+import tn.esprit.veloureservation.UI.PromocodeActivity
 import tn.esprit.veloureservation.ViewModels.ReservationViewModel
 import java.util.Calendar
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         datePicker = findViewById(R.id.datePicker)
         paymentMethodRadioGroup = findViewById(R.id.paymentMethodRadioGroup)
         val submitButton: Button = findViewById(R.id.submitButton)
+        val promoCodeButton: Button = findViewById(R.id.promocodeButton)
 
         submitButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -45,6 +47,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        // Add OnClickListener for the "Add Promo Code" button
+        promoCodeButton.setOnClickListener {
+            // Navigate to PromoCodeActivity
+            val intent = Intent(this, PromocodeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getSelectedDate(): Calendar? {
@@ -69,42 +78,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleReservationSubmission(dateReservation: Calendar, paymentMethod: String) {
-        val etat = false // Set your etat value
-        val idUser = "655e87de5c69918a939e20f9" // Set your idUser value
-        val idVelo = "655d1d936d213ea3741af704" // Set your idVelo value
-        val promoCode = "" // Set your promoCode value
-        val stripeCheckoutSessionId = "" // Set your stripeCheckoutSessionId value
-
-        val reservationRequest = ReservationRequest(
-            dateReservation = dateReservation.time,
-            typePayment = paymentMethod,
-            etat = etat,
-            idUser = idUser,
-            idVelo = idVelo,
-            promoCode = promoCode,
-            stripeCheckoutSessionId = stripeCheckoutSessionId
-        )
-
-        reservationViewModel.commandeVelo(reservationRequest)
-
-        // Navigate to the appropriate activity based on the payment method
         when (paymentMethod) {
             "Credit Card" -> {
-                val intent = Intent(this, ValidActivity::class.java)
+                val intent = Intent(this, CardActivity::class.java)
+                intent.putExtra("dateReservation", dateReservation.timeInMillis)
                 startActivity(intent)
             }
             "pay Later" -> {
+                val etat = false
+                val idUser = "655e87de5c69918a939e20f9"
+                val idVelo = "655d1d936d213ea3741af704"
+                val promoCode = ""
+                val stripeCheckoutSessionId = ""
+
+                val reservationRequest = ReservationRequest(
+                    dateReservation = dateReservation.time,
+                    typePayment = paymentMethod,
+                    etat = etat,
+                    idUser = idUser,
+                    idVelo = idVelo,
+                    promoCode = promoCode,
+                    stripeCheckoutSessionId = stripeCheckoutSessionId
+                )
+
+                reservationViewModel.commandeVelo(reservationRequest)
+
                 val intent = Intent(this, PaylaterActivity::class.java)
                 startActivity(intent)
             }
             else -> {
                 // Handle other payment methods if needed
+                Toast.makeText(this, "Reservation submitted successfully", Toast.LENGTH_SHORT).show()
             }
         }
-
-        // Additional logic if needed
-        // You can use dateReservation and paymentMethod here or perform other actions
-        Toast.makeText(this, "Reservation submitted successfully", Toast.LENGTH_SHORT).show()
     }
 
     private fun showNoRadioButtonSelectedAlert() {
