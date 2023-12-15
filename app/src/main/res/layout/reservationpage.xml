@@ -29,7 +29,7 @@
             <TextView
                 android:id="@+id/totalPriceTextView"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="93dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Total Price"
@@ -55,22 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/promocodeButton"
-                    android:layout_width="242dp"
-                    android:layout_height="66dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="67dp"
-                    android:layout_marginEnd="-309dp"
-                    android:drawableLeft="@drawable/baseline_add_circle_outline_24"
-                    android:gravity="center"
-                    android:text="Add Promo Code"
-                    android:textColor="#FFFF8F"
-                    android:textSize="20sp"
-                    app:backgroundTint="#007E61"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.921" />
+
             </RelativeLayout>
 
 
@@ -96,8 +81,8 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="231dp"
-        android:layout_height="38dp"
+        android:layout_width="216dp"
+        android:layout_height="47dp"
         android:text="Payment Methode"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -123,7 +108,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.478" />
-
 
     <RadioGroup
         android:id="@+id/paymentMethodRadioGroup"

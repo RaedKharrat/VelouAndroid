@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,14 +18,17 @@
         android:theme="@style/Theme.VelouReservation"
         tools:targetApi="31">
 
+        <activity
+            android:name="com.stripe.android.payments.StripeBrowserLauncherActivity"
+            android:exported="false">
+        </activity>
+
         <!-- MainActivity declaration -->
         <activity
             android:name=".UI.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,7 +37,25 @@
         <activity
             android:name=".UI.ValidActivity"
             android:exported="true">
-            <!-- Add any additional intent filters or configuration for ValidActivity here if needed -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Specify your custom success URL scheme -->
+                <data android:scheme="myapp" android:host="success" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".UI.EchecActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Specify your custom failure URL scheme -->
+                <data android:scheme="myapp" android:host="cancel" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -46,11 +69,10 @@
             android:exported="true">
             <!-- Add any additional intent filters or configuration for ValidActivity here if needed -->
         </activity>
-
         <activity
             android:name=".UI.CardActivity"
             android:exported="true">
-            <!-- Add any additional intent filters or configuration for ValidActivity here if needed -->
+            <!-- Add any additional intent filters or configuration for CardActivity here if needed -->
         </activity>
 
     </application>

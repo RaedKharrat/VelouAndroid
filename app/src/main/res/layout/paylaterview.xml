@@ -59,6 +59,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.191" />
 
+
+
     <Button
         android:id="@+id/submittButton"
         android:layout_width="290dp"
@@ -75,5 +77,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.525" />
+
+    <Button
+        android:id="@+id/promocodeButton"
+        android:layout_width="242dp"
+        android:layout_height="66dp"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/baseline_add_circle_outline_24"
+        android:gravity="center"
+        android:text="Add Promo Code"
+        android:textColor="#FFFF8F"
+        android:textSize="20sp"
+        app:backgroundTint="#007E61"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

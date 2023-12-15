@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         datePicker = findViewById(R.id.datePicker)
         paymentMethodRadioGroup = findViewById(R.id.paymentMethodRadioGroup)
         val submitButton: Button = findViewById(R.id.submitButton)
-        val promoCodeButton: Button = findViewById(R.id.promocodeButton)
+       // val promoCodeButton: Button = findViewById(R.id.promocodeButton)
 
         submitButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -49,11 +49,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         // Add OnClickListener for the "Add Promo Code" button
-        promoCodeButton.setOnClickListener {
+        /*promoCodeButton.setOnClickListener {
             // Navigate to PromoCodeActivity
             val intent = Intent(this, PromocodeActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 
     private fun getSelectedDate(): Calendar? {

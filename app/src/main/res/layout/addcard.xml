@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/telechargement">
-
 
     <TextView
         android:id="@+id/textView0"
@@ -22,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.086" />
 
-
     <ImageView
         android:id="@+id/iv"
         android:layout_width="401dp"
@@ -34,43 +32,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.stripe.android.view.CardMultilineWidget
+        android:id="@+id/cardMultilineWidget"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="372dp"
-        android:text="Card Number"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv"
-        app:layout_constraintVertical_bias="0.514" />
-
-    <EditText
-        android:id="@+id/textField"
-        android:layout_width="364dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="20dp"
-        android:alpha="0.7"
-        android:background="@drawable/rounded_edittext_background"
-        android:hint="**** **** **** ****"
-        android:maxLength="16"
-        android:textAlignment="center"
-        android:textColorHint="#111111"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:text="Card Holder"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -78,11 +52,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textField" />
+        app:layout_constraintTop_toBottomOf="@+id/cardMultilineWidget" />
 
     <EditText
         android:id="@+id/textField2"
-        android:layout_width="364dp"
+        android:layout_width="0dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
         android:alpha="0.7"
@@ -94,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView3"
@@ -108,10 +82,9 @@
         app:layout_constraintEnd_toEndOf="@+id/textField3"
         app:layout_constraintStart_toStartOf="@+id/textField3" />
 
-
     <EditText
         android:id="@+id/textField3"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="38dp"
         android:alpha="0.7"
         android:background="@drawable/rounded_edittext_background"
@@ -144,7 +117,7 @@
 
     <EditText
         android:id="@+id/textField4"
-        android:layout_width="155dp"
+        android:layout_width="0dp"
         android:layout_height="38dp"
         android:alpha="0.7"
         android:background="@drawable/rounded_edittext_background"
@@ -161,7 +134,7 @@
 
     <Button
         android:id="@+id/submittButton"
-        android:layout_width="290dp"
+        android:layout_width="0dp"
         android:layout_height="59dp"
         android:alpha="0.8"
         android:text="Pay Now !"
@@ -178,7 +151,7 @@
 
     <CheckBox
         android:id="@+id/toggleSwitch"
-        android:layout_width="274dp"
+        android:layout_width="0dp"
         android:layout_height="39dp"
         android:text="Save card data for your next payment"
         android:textColor="#FFFFFF"
