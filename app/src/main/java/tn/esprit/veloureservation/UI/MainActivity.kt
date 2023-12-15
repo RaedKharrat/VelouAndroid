@@ -1,125 +1,130 @@
 package tn.esprit.veloureservation.UI
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Button
-import android.widget.DatePicker
-import android.widget.RadioGroup
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import tn.esprit.veloureservation.Models.ReservationRequest
+import com.squareup.picasso.Picasso
+
 import tn.esprit.veloureservation.R
-import tn.esprit.veloureservation.UI.CardActivity
-import tn.esprit.veloureservation.UI.PaylaterActivity
-import tn.esprit.veloureservation.UI.PromocodeActivity
-import tn.esprit.veloureservation.ViewModels.ReservationViewModel
-import java.util.Calendar
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.IOException
+import java.security.KeyStore
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
+import javax.net.ssl.HostnameVerifier
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSession
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
+
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var reservationViewModel: ReservationViewModel
-    private lateinit var datePicker: DatePicker
-    private lateinit var paymentMethodRadioGroup: RadioGroup
+    private lateinit var client : OkHttpClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.reservationpage)
+        setContentView(R.layout.activity_main)
+        val backgroundImage: ImageView = findViewById(R.id.backgroundImage)
+        val imageUrl =
+            "https://dm0qx8t0i9gc9.cloudfront.net/watermarks/image/rDtN98Qoishumwih/seamless-bicycle-background_zJBXpu_d_SB_PM.jpg"
+        val trustStore = KeyStore.getInstance(KeyStore.getDefaultType())
+        trustStore.load(null, null)
 
-        reservationViewModel = ViewModelProvider(this).get(ReservationViewModel::class.java)
-        datePicker = findViewById(R.id.datePicker)
-        paymentMethodRadioGroup = findViewById(R.id.paymentMethodRadioGroup)
-        val submitButton: Button = findViewById(R.id.submitButton)
-       // val promoCodeButton: Button = findViewById(R.id.promocodeButton)
-
-        submitButton.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val dateReservation = getSelectedDate()
-                val selectedPaymentMethod = getSelectedPaymentMethod()
-
-                if (dateReservation != null && selectedPaymentMethod != null) {
-                    handleReservationSubmission(dateReservation, selectedPaymentMethod)
-                } else {
-                    showNoRadioButtonSelectedAlert()
+        val trustAllCerts = arrayOf<TrustManager>(
+            object : X509TrustManager {
+                override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
+                override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {}
+                override fun getAcceptedIssuers(): Array<X509Certificate> {
+                    return arrayOf()
                 }
             }
+        )
+        val sslContext = SSLContext.getInstance("SSL")
+        sslContext.init(null, trustAllCerts, SecureRandom())
+        val newBuilder = OkHttpClient.Builder()
+        newBuilder.sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
+        newBuilder.hostnameVerifier(HostnameVerifier { hostname: String?, session: SSLSession? -> true })
+        client = newBuilder.build()
+
+
+        Picasso.get()
+            .load(imageUrl)
+            //.placeholder(R.drawable.placeholder_image)
+            .into(backgroundImage)
+
+
+        val etQuestion = findViewById<EditText>(R.id.etQuestion)
+        val btnSubmit = findViewById<Button>(R.id.btnSubmit)
+        val txtResponse = findViewById<TextView>(R.id.txtResponse)
+
+        btnSubmit.setOnClickListener {
+            val question = etQuestion.text.toString().trim()
+            Toast.makeText(this, question, Toast.LENGTH_SHORT).show()
+            if (question.isNotEmpty()) {
+                getResponse(question) { response ->
+                    runOnUiThread {
+                        txtResponse.text = response
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun getResponse(question: String, callback: (String) -> Unit) {
+        val apiKey = "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"
+        val url = "https://api.openai.com/v1/completions"
+
+        val requestBody = """
+           {
+            "model": "text-davinci-003",
+            "prompt": "$question",
+            "max_tokens": 7,
+            "temperature": 0
+            }
+        """.trimIndent()
+
+        val request = Request.Builder()
+            .url(url)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("Authorization", "Bearer $apiKey")
+            .post(requestBody.toRequestBody("application/json".toMediaTypeOrNull()))
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("error", "API failed", e)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val body = response.body?.string()
+                if (body != null) {
+                    Log.v("data", body)
+                    val jsonObject = JSONObject(body)
+                    val jsonArray: JSONArray = jsonObject.getJSONArray("choices")
+                    val textResult = jsonArray.getJSONObject(0).getString("text")
+                    callback(textResult)
+                } else {
+                    Log.v("data", "empty")
+                }
+                val jsonObject = JSONObject(body)
+                val jsonArray: JSONArray = jsonObject.getJSONArray("choices")
+                val textResult = jsonArray.getJSONObject(0).getString("text")
+                callback(textResult)
+            }
         })
-
-        // Add OnClickListener for the "Add Promo Code" button
-        /*promoCodeButton.setOnClickListener {
-            // Navigate to PromoCodeActivity
-            val intent = Intent(this, PromocodeActivity::class.java)
-            startActivity(intent)
-        }*/
-    }
-
-    private fun getSelectedDate(): Calendar? {
-        val selectedYear = datePicker.year
-        val selectedMonth = datePicker.month
-        val selectedDay = datePicker.dayOfMonth
-
-        val calendar = Calendar.getInstance()
-        calendar.set(selectedYear, selectedMonth, selectedDay)
-
-        return calendar
-    }
-
-    private fun getSelectedPaymentMethod(): String? {
-        val selectedRadioButtonId = paymentMethodRadioGroup.checkedRadioButtonId
-
-        return when (selectedRadioButtonId) {
-            R.id.radioButtonCash -> "pay Later"
-            R.id.radioButtonCard -> "Credit Card"
-            else -> null
-        }
-    }
-
-    private fun handleReservationSubmission(dateReservation: Calendar, paymentMethod: String) {
-        when (paymentMethod) {
-            "Credit Card" -> {
-                val intent = Intent(this, CardActivity::class.java)
-                intent.putExtra("dateReservation", dateReservation.timeInMillis)
-                startActivity(intent)
-            }
-            "pay Later" -> {
-                val etat = false
-                val idUser = "655e87de5c69918a939e20f9"
-                val idVelo = "655d1d936d213ea3741af704"
-                val promoCode = ""
-                val stripeCheckoutSessionId = ""
-
-                val reservationRequest = ReservationRequest(
-                    dateReservation = dateReservation.time,
-                    typePayment = paymentMethod,
-                    etat = etat,
-                    idUser = idUser,
-                    idVelo = idVelo,
-                    promoCode = promoCode,
-                    stripeCheckoutSessionId = stripeCheckoutSessionId
-                )
-
-                reservationViewModel.commandeVelo(reservationRequest)
-
-                val intent = Intent(this, PaylaterActivity::class.java)
-                startActivity(intent)
-            }
-            else -> {
-                // Handle other payment methods if needed
-                Toast.makeText(this, "Reservation submitted successfully", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun showNoRadioButtonSelectedAlert() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Missed field")
-            .setMessage("Please select a payment method and reservation date.")
-            .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-                // You can handle the "OK" button click if needed
-            })
-            .show()
     }
 }

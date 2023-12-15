@@ -20,12 +20,13 @@
 
         <activity
             android:name="com.stripe.android.payments.StripeBrowserLauncherActivity"
-            android:exported="false">
+            android:exported="false"
+            tools:replace="android:exported">
         </activity>
 
         <!-- MainActivity declaration -->
         <activity
-            android:name=".UI.MainActivity"
+            android:name=".UI.MainActivity2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

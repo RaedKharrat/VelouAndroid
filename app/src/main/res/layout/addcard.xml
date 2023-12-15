@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -38,99 +37,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/iv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Card Holder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/submittButton"
+        android:background="#70FFFFFF"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:layout_gravity="center"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardMultilineWidget" />
-
-    <EditText
-        android:id="@+id/textField2"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="12dp"
-        android:alpha="0.7"
-        android:background="@drawable/rounded_edittext_background"
-        android:hint="john dony"
-        android:maxLength="50"
-        android:textAlignment="center"
-        android:textColorHint="#111111"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="44dp"
-        android:layout_height="33dp"
-        android:text="CVV"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textField3"
-        app:layout_constraintEnd_toEndOf="@+id/textField3"
-        app:layout_constraintStart_toStartOf="@+id/textField3" />
-
-    <EditText
-        android:id="@+id/textField3"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:alpha="0.7"
-        android:background="@drawable/rounded_edittext_background"
-        android:hint="***"
-        android:maxLength="3"
-        android:textAlignment="center"
-        android:textColorHint="#111111"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.805" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Expiration date"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textField4"
-        app:layout_constraintEnd_toEndOf="@+id/textField4"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="@+id/textField4"
-        app:layout_constraintTop_toBottomOf="@+id/textField2"
-        app:layout_constraintVertical_bias="0.01" />
-
-    <EditText
-        android:id="@+id/textField4"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:alpha="0.7"
-        android:background="@drawable/rounded_edittext_background"
-        android:hint="MM/YYYY"
-        android:maxLength="7"
-        android:textAlignment="center"
-        android:textColorHint="#111111"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.805" />
+        android:textSize="54sp"
+        app:layout_constraintVertical_bias="0.05"/>
 
     <Button
         android:id="@+id/submittButton"
@@ -146,21 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardMultilineWidget"
         app:layout_constraintVertical_bias="0.944" />
-
-    <CheckBox
-        android:id="@+id/toggleSwitch"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:text="Save card data for your next payment"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
