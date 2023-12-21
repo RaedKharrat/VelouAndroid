@@ -38,6 +38,7 @@ class CardActivity : AppCompatActivity() {
             if (cardMultilineWidget.validateAllFields()) {
                 // Handle success
                 val reservationRequest = ReservationRequest(
+                    id = "",
                     dateReservation = dateReservation,
                     typePayment = "Credit Card", // You can set the payment type as needed
                     etat = false,

@@ -1,8 +1,11 @@
 package tn.esprit.veloureservation.Models
 
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 data class ReservationRequest(
+    @SerializedName("_id")
+    val id: String?,
     val dateReservation: Date,
     val typePayment: String,
     val etat: Boolean,

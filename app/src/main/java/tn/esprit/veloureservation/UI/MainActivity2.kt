@@ -45,7 +45,7 @@ class MainActivity2 : AppCompatActivity() {
         totalPriceTextView3 = findViewById(R.id.totalPriceTextView3)
 
         nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
-            // Hide TextViews when user scrolls down
+            // Hide TextViews when the user scrolls down
             if (scrollY > 0) {
                 totalPriceTextView1.visibility = View.GONE
                 totalPriceTextView2.visibility = View.GONE
@@ -105,6 +105,7 @@ class MainActivity2 : AppCompatActivity() {
                 val stripeCheckoutSessionId = ""
 
                 val reservationRequest = ReservationRequest(
+                    id = null,  // Pass the ID if it's available
                     dateReservation = dateReservation.time,
                     typePayment = paymentMethod,
                     etat = etat,

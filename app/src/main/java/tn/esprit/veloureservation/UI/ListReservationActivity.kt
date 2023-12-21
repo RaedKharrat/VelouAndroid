@@ -1,5 +1,3 @@
-// ListReservationActivity.kt
-
 package tn.esprit.veloureservation.UI
 
 import android.os.Bundle
@@ -35,7 +33,7 @@ class ListReservationActivity : AppCompatActivity(), ReservationClickListener {
         })
 
         // Replace "USER_ID_TO_FETCH_RESERVATIONS" with the actual user ID
-        reservationViewModel.getReservationsForUser("USER_ID_TO_FETCH_RESERVATIONS")
+        reservationViewModel.getReservationsForUser("655e87de5c69918a939e20f9")
     }
 
     override fun onCancelButtonClick(reservation: ReservationResponse?) {
@@ -47,5 +45,4 @@ class ListReservationActivity : AppCompatActivity(), ReservationClickListener {
             // Handle the case when reservation or its id is null (optional)
         }
     }
-
 }

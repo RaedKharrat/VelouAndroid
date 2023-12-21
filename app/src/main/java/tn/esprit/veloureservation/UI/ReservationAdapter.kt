@@ -1,5 +1,3 @@
-// ReservationAdapter.kt
-
 package tn.esprit.veloureservation.UI
 
 import android.util.Log
@@ -43,13 +41,13 @@ class ReservationAdapter(private val clickListener: ReservationClickListener) :
         fun bind(reservation: ReservationResponse?, currentDate: Long, clickListener: ReservationClickListener) {
             Log.d("ReservationViewHolder", "Binding reservation: $reservation")
 
-            idTextView.text = "${reservation?.id}\n"
-            dateTextView.text = "${reservation?.dateReservation}\n"
-            typePaymentTextView.text = "${reservation?.typePayment}"
+            //idTextView.text = "ID: ${reservation?.id}\n"
+            dateTextView.text = "Date : \n ${reservation?.dateReservation}\n"
+            typePaymentTextView.text = "Payment Methode :\n ${reservation?.typePayment}"
 
             val reservationDate = reservation?.dateReservation?.time ?: 0L
 
-            if (reservation != null && reservation.id != null && reservationDate > currentDate) {
+            if (reservation != null && reservationDate > currentDate) {
                 Log.d("ReservationViewHolder", "Show cancel button for reservation: $reservation")
                 cancelButton.visibility = View.VISIBLE
                 cancelButton.setOnClickListener {
