@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:alpha="0.92"
+    app:cardCornerRadius="13dp"
+    app:cardBackgroundColor="#007E61"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="386dp"
+        android:layout_height="301dp"
+        android:padding="20dp">
+
+        <!-- Title TextView centered at the top -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="255dp"
+            android:layout_height="59dp"
+            android:text="Reservation Details"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/idTextView"
+            android:layout_width="255dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="44dp"
+            android:text="id"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dateTextView9"
+            android:layout_width="161dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="8dp"
+            android:text="Reservation Date"
+            android:textColor="#FFFF8F"
+            android:textSize="20sp"
+            android:textStyle="bold|normal"
+            app:layout_constraintBottom_toTopOf="@+id/dateTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="176dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="8dp"
+            android:text="Date: Placeholder"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold|normal"
+            app:layout_constraintBottom_toTopOf="@+id/dateTextView99"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateTextView9" />
+
+        <TextView
+            android:id="@+id/dateTextView99"
+            android:layout_width="160dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="8dp"
+            android:text="Payment Method"
+            android:textColor="#FFFF8F"
+            android:textSize="20sp"
+            android:textStyle="bold|normal"
+            app:layout_constraintBottom_toTopOf="@+id/typePaymentTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
+
+        <TextView
+            android:id="@+id/typePaymentTextView"
+            android:layout_width="132dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="8dp"
+            android:text="Payment Method: Placeholder"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold|normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateTextView99" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/submittButton"
+        android:layout_width="334dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:layout_marginBottom="4dp"
+        android:text="Annuler Reservation"
+        android:textColor="#007561"
+        android:textSize="20sp"
+        android:textStyle="bold|normal"
+        app:backgroundTint="#FFF66F" />
+</com.google.android.material.card.MaterialCardView>

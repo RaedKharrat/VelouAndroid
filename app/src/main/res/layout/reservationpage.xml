@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/telechargement">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Your existing components -->
+
+        <FrameLayout
+            android:id="@+id/rectangleBackground"
+            android:layout_width="427dp"
+            android:layout_height="253dp"
+            android:alpha="0.85"
+            android:background="@drawable/rounded_frame_background"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <!-- LinearLayout to hold both TextViews -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/totalPriceTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="147dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Facture"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/totalPriceTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="123dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Total price : 120.00 Dt"
+                    android:textColor="#FFFF7F"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/totalPriceTextView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="123dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Reduction code : - 0.00 Dt"
+                    android:textColor="#FFFF7F"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/totalPriceTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="123dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tax : 0.50 Dt"
+                    android:textColor="#FFFF7F"
+                    android:textSize="20sp" />
+
+                <!-- Your other TextView components -->
+
+                <TextView
+                    android:id="@+id/yourTextViewId"
+                    android:layout_width="417dp"
+                    android:layout_height="198dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="DT 120.50"
+                    android:textColor="#FFFFFF"
+                    android:textSize="48sp"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="205dp"
+            android:layout_height="31dp"
+            android:text="Reservation Date"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#B81A1A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.38" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="216dp"
+            android:layout_height="47dp"
+            android:text="Payment Methode"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.738" />
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="322dp"
+            android:layout_height="184dp"
+            android:alpha="0.8"
+            android:background="#CCCC"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.566" />
+
+        <RadioGroup
+            android:id="@+id/paymentMethodRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/submitButton">
+
+            <RadioButton
+                android:id="@+id/radioButtonCard"
+                android:layout_width="126dp"
+                android:layout_height="44dp"
+                android:text="Credit Card"
+                android:textColor="#FFFFFF" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCash"
+                android:layout_width="120dp"
+                android:layout_height="44dp"
+                android:text="pay Later"
+                android:textColor="#FFFFFF" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="290dp"
+            android:layout_height="59dp"
+            android:text="Submit"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:backgroundTint="#007E61"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.949" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

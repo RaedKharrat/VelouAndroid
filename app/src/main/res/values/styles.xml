@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="CardInputHintStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">#FFFFFF</item>
+    </style>
+
+    <!-- Add other styles as needed -->
+
+</resources>
