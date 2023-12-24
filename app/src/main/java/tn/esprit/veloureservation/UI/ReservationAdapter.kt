@@ -37,6 +37,7 @@ class ReservationAdapter(private val clickListener: ReservationClickListener) :
         private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
         private val typePaymentTextView: TextView = itemView.findViewById(R.id.typePaymentTextView)
         private val cancelButton: Button = itemView.findViewById(R.id.submittButton)
+        private val promoButton: Button = itemView.findViewById(R.id.submittButtonn)
 
         fun bind(reservation: ReservationResponse?, currentDate: Long, clickListener: ReservationClickListener) {
             Log.d("ReservationViewHolder", "Binding reservation: $reservation")
@@ -50,12 +51,15 @@ class ReservationAdapter(private val clickListener: ReservationClickListener) :
             if (reservation != null && reservationDate > currentDate) {
                 Log.d("ReservationViewHolder", "Show cancel button for reservation: $reservation")
                 cancelButton.visibility = View.VISIBLE
+                promoButton.visibility = View.VISIBLE
                 cancelButton.setOnClickListener {
                     clickListener.onCancelButtonClick(reservation)
                 }
             } else {
                 Log.d("ReservationViewHolder", "Hide cancel button for reservation: $reservation")
                 cancelButton.visibility = View.GONE
+                promoButton.visibility = View.GONE
+
             }
         }
     }

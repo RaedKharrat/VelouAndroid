@@ -28,10 +28,7 @@
         <activity
             android:name=".UI.MainActivity2"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <!-- ValidActivity declaration -->
@@ -68,7 +65,10 @@
         <activity
             android:name=".UI.ListReservationActivity"
             android:exported="true">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <!-- Add any additional intent filters or configuration for ValidActivity here if needed -->
         </activity>
 

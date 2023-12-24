@@ -11,7 +11,7 @@ object RetrofitImp {
 
 
     //private const val BASE_URL = "http://10.0.2.2:27017/"  //hedha in case theeb tekdhem bel empulator el 3adii
-    private const val BASE_URL = "http://192.168.1.9:27017/" // star hedha li bech thot fih el address mac
+    private const val BASE_URL = "http://192.168.1.178:27017/" // star hedha li bech thot fih el address mac
 
 
     private val retrofit: Retrofit by lazy {

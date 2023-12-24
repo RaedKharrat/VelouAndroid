@@ -91,13 +91,13 @@ class ReservationViewModel : ViewModel() {
                     Log.d("ReservationViewModel", "Reservation deleted successfully")
                 } else {
                     // Handle unsuccessful response
-                    Log.e("ReservationViewModel", "Failed to delete reservation. Response code: ${response.code()}")
+                    Log.e("ReservationViewModel", "Failed to delete reservation on response. Response code: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 // Handle failure
-                Log.e("ReservationViewModel", "Failed to delete reservation", t)
+                Log.e("ReservationViewModel", "Failed to delete reservation on fail", t)
             }
         })
     }

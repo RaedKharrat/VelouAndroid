@@ -9,85 +9,81 @@
     android:layout_marginTop="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:alpha="0.92"
+    android:alpha="0.89"
     app:cardCornerRadius="13dp"
-    app:cardBackgroundColor="#007E61"
+    app:cardBackgroundColor="#019875"
     app:cardUseCompatPadding="true"
     app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:padding="16dp">
 
-        <!-- Title TextView centered at the top -->
         <TextView
             android:id="@+id/titleTextView"
-            android:layout_width="255dp"
-            android:layout_height="59dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Reservation Details"
             android:textColor="#FFF66F"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TextView to display reservation ID -->
         <TextView
             android:id="@+id/idTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ID: Placeholder"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold|normal"
-            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-        <!-- TextView to display reservation date -->
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="Date: Placeholder"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold|normal"
-            app:layout_constraintTop_toBottomOf="@+id/idTextView"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/idTextView" />
 
-        <!-- TextView to display payment method -->
         <TextView
             android:id="@+id/typePaymentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="Payment Method: Placeholder"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold|normal"
-            app:layout_constraintTop_toBottomOf="@+id/dateTextView"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
 
-        <!-- Button to cancel reservation -->
         <Button
             android:id="@+id/submittButton"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Annuler Reservation"
-            android:textColor="#007561"
-            android:textSize="20sp"
-            android:textStyle="bold|normal"
-            app:backgroundTint="#FFF66F"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#af1607"
             app:layout_constraintTop_toBottomOf="@+id/typePaymentTextView" />
+
+        <Button
+            android:id="@+id/submittButtonn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Promo code !"
+            android:textColor="#4CAF50"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#FFF060"
+            app:layout_constraintTop_toBottomOf="@+id/submittButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
