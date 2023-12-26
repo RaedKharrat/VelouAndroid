@@ -14,6 +14,7 @@ import tn.esprit.veloureservation.R
 
 interface ReservationClickListener {
     fun onCancelButtonClick(reservation: ReservationResponse?)
+    fun onPromoButtonClick(reservation: ReservationResponse?)
 }
 
 class ReservationAdapter(private val clickListener: ReservationClickListener) :
@@ -33,7 +34,6 @@ class ReservationAdapter(private val clickListener: ReservationClickListener) :
     }
 
     class ReservationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val idTextView: TextView = itemView.findViewById(R.id.idTextView)
         private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
         private val typePaymentTextView: TextView = itemView.findViewById(R.id.typePaymentTextView)
         private val cancelButton: Button = itemView.findViewById(R.id.submittButton)
@@ -42,7 +42,6 @@ class ReservationAdapter(private val clickListener: ReservationClickListener) :
         fun bind(reservation: ReservationResponse?, currentDate: Long, clickListener: ReservationClickListener) {
             Log.d("ReservationViewHolder", "Binding reservation: $reservation")
 
-            //idTextView.text = "ID: ${reservation?.id}\n"
             dateTextView.text = "Date : \n ${reservation?.dateReservation}\n"
             typePaymentTextView.text = "Payment Methode :\n ${reservation?.typePayment}"
 
@@ -55,11 +54,13 @@ class ReservationAdapter(private val clickListener: ReservationClickListener) :
                 cancelButton.setOnClickListener {
                     clickListener.onCancelButtonClick(reservation)
                 }
+                promoButton.setOnClickListener {
+                    clickListener.onPromoButtonClick(reservation)
+                }
             } else {
-                Log.d("ReservationViewHolder", "Hide cancel button for reservation: $reservation")
+                Log.d("ReservationViewHolder", "Hide buttons for reservation: $reservation")
                 cancelButton.visibility = View.GONE
                 promoButton.visibility = View.GONE
-
             }
         }
     }

@@ -3,6 +3,7 @@ package tn.esprit.veloureservation.UI
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -36,19 +37,6 @@ class ListReservationActivity : AppCompatActivity(), ReservationClickListener {
 
         // Replace "USER_ID_TO_FETCH_RESERVATIONS" with the actual user ID
         reservationViewModel.getReservationsForUser("655e87de5c69918a939e20f9")
-
-        // Inflate the card_reservation layout
-        val cardReservationLayout = layoutInflater.inflate(R.layout.card_reservation, null)
-
-        // Find the Promo button by ID in the inflated layout
-        val promoButton: Button = cardReservationLayout.findViewById(R.id.submittButtonn)
-
-        // Set a click listener for the Promo button
-        promoButton.setOnClickListener {
-            // Start the PromocodeActivity when the button is clicked
-            val intent = Intent(this@ListReservationActivity, PromocodeActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     override fun onCancelButtonClick(reservation: ReservationResponse?) {
@@ -59,5 +47,11 @@ class ListReservationActivity : AppCompatActivity(), ReservationClickListener {
             Log.d("ReservationActivity", "Cancel button clicked, but reservation or its ID is null.")
             // Handle the case when reservation or its id is null (optional)
         }
+    }
+
+    override fun onPromoButtonClick(reservation: ReservationResponse?) {
+        // Start the PromocodeActivity when the "Promo code !" button is clicked
+        val intent = Intent(this@ListReservationActivity, PromocodeActivity::class.java)
+        startActivity(intent)
     }
 }
